@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Employee;
 use App\Models\Service;
+// use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class CreateBooking extends Component
@@ -11,16 +12,28 @@ class CreateBooking extends Component
     public $employee;
 
     public $state = [
-        'service' => null,
-        'employee' => null
+        'service' => '',
+        'employee' => ''
     ];
+
+    public function mount()
+    {
+        $this->employees = collect();
+    }
 
     public function updatedStateService($serviceId)
     {
-        $this->state['employee'] = null;
+        $this->state['employee'] = '';
+
+        if (!$serviceId) {
+            $this->employees = collect();
+            return;
+        }
 
         $this->employees = $this->selectedService->employees;
     }
+
+
 
 
     public function getSelectedServiceProperty()
@@ -32,13 +45,22 @@ class CreateBooking extends Component
         return Service::find($this->state['service']);
     }
 
+    public function getSelectedemployeeProperty()
+    {
+        if (!$this->state['employee']) {
+            return null;
+        }
+
+        return Employee::find($this->state['employee']);
+    }
+
     public function render()
     {
         $services = Service::get();
-        $employees = Employee::
+        $employees = Employee::get();
         return view('livewire.create-booking', [
-            'services' => $services
-        ])
-            ->layout('layouts.guest');
+            'services' => $services,
+            'employees' => $employees
+        ])->layout('layouts.guest');
     }
 }
