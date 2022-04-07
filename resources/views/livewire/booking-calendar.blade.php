@@ -26,12 +26,13 @@
 
     <div class="flex items-center justify-between px-3 pb-2 border border-b-gray-200">
         @foreach ($this->calendarWeekInterval as $day)
-            <button type="button" class="text-center cursor-pointer group focus:outline-none" wire:click='setDate({{$day->timestamp}})'>
+            <button type="button" class="text-center cursor-pointer group focus:outline-none"
+                wire:click='setDate({{ $day->timestamp }})'>
                 <div class="mb-2 text-xs leading-none text-gray-700">
                     {{ $day->format('D') }}
                 </div>
                 <div
-                    class="flex items-center justify-center p-1 text-lg leading-none rounded-full group-hover:bg-gray-200 w-9 h-9 {{$date == $day->timestamp ? 'bg-gray-200' : ''}}">
+                    class="flex items-center justify-center p-1 text-lg leading-none rounded-full group-hover:bg-gray-200 w-9 h-9 {{ $date == $day->timestamp ? 'bg-gray-200' : '' }}">
                     {{ $day->format('d') }}
                 </div>
             </button>
@@ -39,18 +40,30 @@
     </div>
 
     <div class="overflow-y-scroll max-h-52">
-        <input type="radio" name="time" id="" value="" class="hidden">
-        <label for=""
-            class="flex items-center w-full px-4 py-2 text-left border-gray-200 cursor-pointer focus:outline-none">
-            <svg class="w-4 h-4 mr-2 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            9:00am <br>
-        </label>
-
-        <div class="px-4 py-2 text-center text-gray-700">
-            no available
-        </div>
+        @if ($this->availableTimeSlots->count())
+            @foreach ($this->availableTimeSlots as $slot)
+                <input type="radio"
+                name="time"
+                id="time-{{ $slot->timestamp }}"
+                value="{{ $slot->timestamp }}"
+                wire:model='time'
+                class="sr-only">
+                <label for="time-{{ $slot->timestamp }}"
+                    class="flex items-center w-full px-4 py-2 text-left border-gray-200 cursor-pointer focus:outline-none">
+                    @if ($slot->timestamp == $time)
+                        <svg class="w-4 h-4 mr-2 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    @endif
+                    {{ $slot->format('g:i A') }} <br>
+                </label>
+            @endforeach
+        @else
+            <div class="px-4 py-2 text-center text-gray-700">
+                no available
+            </div>
+        @endif
     </div>
 </div>

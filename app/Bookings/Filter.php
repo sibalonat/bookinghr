@@ -4,10 +4,6 @@ namespace App\Bookings;
 
 use Carbon\CarbonPeriod;
 
-// class ClassName
-// {
-
-// }
 
 interface Filter
 {

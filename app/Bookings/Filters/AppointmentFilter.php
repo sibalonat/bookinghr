@@ -14,17 +14,11 @@ class AppointmentFilter implements Filter
         $this->appointments = $appointments;
     }
 
-
     public function apply(
     TimeSlotGenerator $generator,
     CarbonPeriod $interval)
     {
         $interval->addFilter(function($slot) use($generator) {
-            // if ($generator->schedule->date->isToday()) {
-            //     if ($slot->lt(now())) {
-            //         return false;
-            //     }
-            // }
             foreach ($this->appointments as $appointment) {
                 if (
                     $slot->between(
@@ -39,9 +33,6 @@ class AppointmentFilter implements Filter
                    return false;
                 }
             }
-
-
-
             return true;
         });
     }

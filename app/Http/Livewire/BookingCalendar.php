@@ -14,10 +14,17 @@ class BookingCalendar extends Component
     public $employee;
     public $service;
 
+    public $time;
+
     public function mount()
     {
         $this->calendarStartDate = now();
         $this->setDate(now()->timestamp);
+    }
+
+    public function updatedTime($time)
+    {
+        $this->emitUp('update-booking-time', $time);
     }
 
     public function getEmployeeScheduleProperty()
