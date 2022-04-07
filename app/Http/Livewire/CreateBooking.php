@@ -70,9 +70,10 @@ class CreateBooking extends Component
         $appointment->employee()->associate($this->selectedEmployee);
 
         $appointment->save();
+
+        return redirect()->to(route('booking.show', $appointment) . '?token=' . $appointment->token);
     }
 
-    // public function getTimeObject
 
     public function setTime($time)
     {

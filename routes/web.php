@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/bookings/create', CreateBooking::class);
-Route::get('/bookings/{appointment:uuid}', ShowBooking::class);
+Route::get('/bookings/{appointment:uuid}', ShowBooking::class)->name('booking.show');
 // Route::get('/bookings/create', BookingController::class);
 
 
