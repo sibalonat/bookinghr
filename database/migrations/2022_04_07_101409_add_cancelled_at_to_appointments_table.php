@@ -14,7 +14,6 @@ class AddCancelledAtToAppointmentsTable extends Migration
     public function up()
     {
         Schema::table('appointments', function (Blueprint $table) {
-            //
             $table->timestamp('cancelled_at')->nullable();
         });
     }

@@ -15,4 +15,23 @@
             {{$appointment->client_name}} thank you for your booking
         </div> --}}
     </div>
+
+    @if (!$appointment->isCancelled())
+    <button
+    type="button"
+    class="w-full px-4 font-bold text-center text-white bg-pink-500 rounded-lg h-11"
+    x-data="{
+        confirmCancellation() {
+            if(window.confirm('Are you sure?')) {
+                @this.call('cancelBooking')
+            }
+        }
+    }"
+    x-on:click="confirmCancellation">Cancel Booking</button>
+    @endif
+
+    @if ($appointment->isCancelled())
+    <p>your booking has been cancelled</p>
+    @endif
+
 </div>

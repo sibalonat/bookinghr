@@ -19,6 +19,14 @@ class ShowBooking extends Component
         }
     }
 
+    public function cancelBooking()
+    {
+        // dd('kot');
+        $this->appointment->update([
+            'cancelled_at' => now()
+        ]);
+    }
+
     public function render()
     {
         return view('livewire.show-booking')

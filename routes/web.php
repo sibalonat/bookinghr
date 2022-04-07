@@ -2,6 +2,11 @@
 
 // use App\Http\Controllers\BookingController;
 use App\Http\Livewire\CreateBooking;
+use App\Http\Livewire\EmployeeCreation;
+use App\Http\Livewire\ServiceCreation;
+use App\Http\Livewire\ShowBooking;
+// use App\Models\Employee;
+// use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +28,13 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+
+Route::get('/service/create', ServiceCreation::class)->name('service.create');
+Route::get('/service/{service}/create', EmployeeCreation::class)->name('employee.attach');
+
 Route::get('/bookings/create', CreateBooking::class);
 Route::get('/bookings/{appointment:uuid}', ShowBooking::class)->name('booking.show');
-// Route::get('/bookings/create', BookingController::class);
+
 
 
 
