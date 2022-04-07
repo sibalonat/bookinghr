@@ -8,6 +8,7 @@ class EmployeeCreation extends Component
 {
     public function render()
     {
-        return view('livewire.employee-creation');
+        return view('livewire.employee-creation')
+        ->layout('layouts.guest');
     }
 }

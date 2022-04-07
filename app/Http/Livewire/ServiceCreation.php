@@ -8,13 +8,15 @@ use Livewire\Component;
 
 class ServiceCreation extends Component
 {
-    public $state = [
-        'service' => '',
-        'employee' => '',
-    ];
+    // public $state = [
+    //     'service' => '',
+    //     'employee' => '',
+    // ];
 
+    // public $service;
     public Service $service;
     // public Employee $employee;
+
 
     public function mount(Service $service)
     {
@@ -25,18 +27,14 @@ class ServiceCreation extends Component
     {
         return [
             'service.name' => 'required | string',
-            'service.duration' => 'required | min:15',
-            // 'service.name' => 'required | exists:services, id',
-            // 'state.duration' => 'required | exists:employees, id',
-            // 'state.time' => 'required | numeric',
-            // 'state.name' => 'required | string',
-            // 'state.email' => 'required | email',
+            'service.duration' => 'required',
         ];
     }
 
     public function submit()
     {
         $this->validate();
+        // dd($this);
         $this->service->save();
         return redirect()->route('employee.attach', $this->service);
     }
