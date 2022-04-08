@@ -8,8 +8,10 @@ This is an snipet code dedicated to booking an appointment. It can work very wel
     * - Framework: Laravel
     * - Livewire public attributes and properties
     * - There is no js
+    
+    
     [
-        ## Additional ++
+        Additional ++
         The structure of the code is as follows, there is a Booking directory where is the filters for segmented availability and services to book for additional times. 
         
         in the http folder then there is a folder for livewire controller(alias)
