@@ -32,7 +32,7 @@
                     {{ $day->format('D') }}
                 </div>
                 <div
-                    class="flex items-center justify-center p-1 text-lg leading-none rounded-full group-hover:bg-gray-200 w-9 h-9 {{ $date == $day->timestamp ? 'bg-gray-200' : '' }}">
+                    class="flex items-center justify-center p-1 text-lg leading-none rounded-full group-hover:bg-gray-200 w-9 h-9 {{ $date === $day->timestamp ? 'bg-gray-200' : '' }}">
                     {{ $day->format('d') }}
                 </div>
             </button>
@@ -50,7 +50,7 @@
                 class="sr-only">
                 <label for="time-{{ $slot->timestamp }}"
                     class="flex items-center w-full px-4 py-2 text-left border-gray-200 cursor-pointer focus:outline-none">
-                    @if ($slot->timestamp == $time)
+                    @if ($slot->timestamp === $time)
                         <svg class="w-4 h-4 mr-2 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
