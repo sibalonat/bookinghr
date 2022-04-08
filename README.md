@@ -7,7 +7,7 @@ This is an snipet code dedicated to booking an appointment. It can work very wel
 [ 
     * - Framework: Laravel
     * - Livewire public attributes and properties
-    * - There is no js
+    * - It says that 40% is javascript but that is just the part from Livewire the entire project is in PHP
     
     
     [
