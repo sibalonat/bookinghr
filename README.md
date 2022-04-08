@@ -1,24 +1,22 @@
-
 ## Booking HR
 
 This is an snipet code dedicated to booking an appointment. It can work very well with any type of implementation. I will continue reviewing if it needs additional refactoring.
 
 # Addition
-[ 
-    * - Framework: Laravel
-    * - Livewire public attributes and properties
-    * - It says that 40% is javascript but that is just the part from Livewire the entire project is in PHP
-    
-    
-    [
-        Additional ++
-        The structure of the code is as follows, there is a Booking directory where is the filters for segmented availability and services to book for additional times. 
-        
-        in the http folder then there is a folder for livewire controller(alias)
-        and then in the resources there is a similar folder for livewire work
-    ]
-]
 
+[
+
+-   **[Framework: Laravel]**
+-   **[Livewire public attributes and properties](https://laravel-livewire.com)**
+-   **[It says that 40% is javascript but that is just the part from Livewire the entire project is in PHP]**
+        [
+            Additional ++
+            The structure of the code is as follows, there is a Booking directory where is the filters for segmented availability and services to book for additional times.
+
+            in the http folder then there is a folder for livewire controller(alias)
+            and then in the resources there is a similar folder for livewire work
+        ]
+    ]
 
 ## Code of Conduct
 
