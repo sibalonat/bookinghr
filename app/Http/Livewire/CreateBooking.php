@@ -46,15 +46,6 @@ class CreateBooking extends Component
         // dd($this->state);
         $this->validate();
 
-        // $bookingFields = [
-        //     'date' => $this->timeObject->toDateString(),
-        //     'start_time' => $this->timeObject->toTimeString(),
-        //     'end_time' => $this->timeObject->clone()->addMinutes(
-        //         $this->selectedService->duration
-        //     )->toTimeString(),
-        //     'client_name' => $this->state['name'],
-        //     'client_email' => $this->state['email']
-        // ];
 
         $appointment = Appointment::make([
             'date' => $this->timeObject->toDateString(),
@@ -93,6 +84,7 @@ class CreateBooking extends Component
         $this->clearTime();
 
         $this->employees = $this->selectedService->employees;
+        // $this->employees = $this->selectedService->employees;
     }
 
     public function updatedStateEmployee()
@@ -143,4 +135,17 @@ class CreateBooking extends Component
             'employees' => $employees
         ])->layout('layouts.guest');
     }
+
+
+
+
+    // $bookingFields = [
+    //     'date' => $this->timeObject->toDateString(),
+    //     'start_time' => $this->timeObject->toTimeString(),
+    //     'end_time' => $this->timeObject->clone()->addMinutes(
+    //         $this->selectedService->duration
+    //     )->toTimeString(),
+    //     'client_name' => $this->state['name'],
+    //     'client_email' => $this->state['email']
+    // ];
 }

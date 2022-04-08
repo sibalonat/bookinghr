@@ -29,6 +29,7 @@ class BookingCalendar extends Component
 
     public function getEmployeeScheduleProperty()
     {
+        // dd($this->employee);
         return $this->employee->schedules()
         ->whereDate('date', $this->calendarSelectedDateObject)
         ->first();
@@ -36,26 +37,33 @@ class BookingCalendar extends Component
 
     public function getAvailableTimeSlotsProperty()
     {
-        // if ($this->employee || !$this->employee->schedules()) {
         if ($this->employee || !$this->employeeSchedule) {
             return collect();
         }
 
         return $this->employee->availableTimeSlots($this->employeeSchedule, $this->service);
+        // return $this->employee->availableTimeSlots($this->employeeSchedule, $this->service);
     }
 
     public function getCalendarSelectedDateObjectProperty()
     {
+        // dd(Carbon::createFromTimestamp($this->date));
         return Carbon::createFromTimestamp($this->date);
     }
 
     public function setDate($timestamp)
     {
         $this->date = $timestamp;
+        // dd($this->employeeSchedule);
     }
 
     public function getCalendarWeekIntervalProperty()
     {
+        // dd(CarbonInterval::days(1)
+        // ->toPeriod(
+        //     $this->calendarStartDate,
+        //     $this->calendarStartDate->clone()->addWeek()
+        // ));
         return CarbonInterval::days(1)
         ->toPeriod(
             $this->calendarStartDate,
@@ -80,6 +88,7 @@ class BookingCalendar extends Component
 
     public function render()
     {
-        return view('livewire.booking-calendar')->layout('layouts.guest');
+        return view('livewire.booking-calendar')
+        ->layout('layouts.guest');
     }
 }

@@ -12,7 +12,7 @@
 
         <div class="relative flex items-center justify-center">
             <div class="p-4 text-lg font-semibold">
-                {{ $this->calendarWeekInterval->format('M Y') }}
+                {{ $this->calendarStartDate->format('M Y') }}
             </div>
         </div>
 
@@ -44,13 +44,13 @@
             @foreach ($this->availableTimeSlots as $slot)
                 <input type="radio"
                 name="time"
-                id="time-{{ $slot->timestamp }}"
+                id="time_{{ $slot->timestamp }}"
                 value="{{ $slot->timestamp }}"
                 wire:model='time'
                 class="sr-only">
-                <label for="time-{{ $slot->timestamp }}"
+                <label for="time_{{ $slot->timestamp }}"
                     class="flex items-center w-full px-4 py-2 text-left border-gray-200 cursor-pointer focus:outline-none">
-                    @if ($slot->timestamp === $time)
+                    @if ($slot->timestamp == $time)
                         <svg class="w-4 h-4 mr-2 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
