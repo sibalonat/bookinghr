@@ -15,11 +15,10 @@ class CreateEmployeeServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employee_services', function (Blueprint $table) {
+        Schema::create('employee_service', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(Employee::class)->constrained();
             $table->foreignIdFor(Service::class)->constrained();
-            $table->unique(['employee_id', 'service_id']);
             $table->timestamps();
         });
     }

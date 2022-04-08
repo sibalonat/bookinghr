@@ -16,6 +16,10 @@ class Employee extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title'
+    ];
+
     public function availableTimeSlots(Schedule $schedule, Service $service)
     {
         return (new TimeSlotGenerator($schedule, $service))

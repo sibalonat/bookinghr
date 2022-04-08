@@ -3,23 +3,37 @@
 namespace App\Http\Livewire;
 
 // use App\Models\Employee;
+
+use App\Models\Employee;
+use App\Models\EmployeeService;
 use App\Models\Service;
 use Livewire\Component;
 
 class ServiceCreation extends Component
 {
-    // public $state = [
-    //     'service' => '',
-    //     'employee' => '',
-    // ];
 
-    // public $service;
     public Service $service;
-    // public Employee $employee;
 
+    public $employeeServices = null;
 
-    public function mount(Service $service)
+    public $employee;
+
+    public function mount(Service $service, Employee $employee)
     {
+
+        $this->employee = $employee;
+
+        // dd($this->employee);
+
+        $this->employeeServices = $this->employee->services()->get();
+
+        // if ($this->employeeServices != null) {
+        //     $this->employeeServices = $this->employee->services()->pluck('id');
+        // } else {
+        //     $this->employeeServices = $this->employee->id;
+        // }
+
+
         $this->service = $service ?? new Service;
     }
 
@@ -28,15 +42,21 @@ class ServiceCreation extends Component
         return [
             'service.name' => 'required | string',
             'service.duration' => 'required',
+            'employeeServices' => 'required'
         ];
     }
 
     public function submit()
     {
+        // dd($this->employeeServices);
         $this->validate();
         // dd($this);
         $this->service->save();
-        return redirect()->route('employee.attach', $this->service);
+        // dd($this->service->with('employee'));
+        $this->service->employees()->sync($this->employeeServices);
+
+        $this->emit('employeeServices');
+        return redirect()->route('book.service');
     }
 
 

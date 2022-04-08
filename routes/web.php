@@ -29,10 +29,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
-Route::get('/service/create', ServiceCreation::class)->name('service.create');
-Route::get('/service/{service}/create', EmployeeCreation::class)->name('employee.attach');
+Route::get('/employee/create', EmployeeCreation::class)->name('service.create');
+Route::get('/employee/{employee}/create', ServiceCreation::class)->name('employee.attach');
+// Route::get('/service/create', ServiceCreation::class)->name('service.create');
+// Route::get('/service/{service}/create', EmployeeCreation::class)->name('employee.attach');
 
-Route::get('/bookings/create', CreateBooking::class);
+Route::get('/bookings/create', CreateBooking::class)->name('book.service');
 Route::get('/bookings/{appointment:uuid}', ShowBooking::class)->name('booking.show');
 
 
