@@ -16,7 +16,7 @@
                     <div class="px-4 py-5 bg-white sm:p-6">
                       <div class="grid grid-cols-6 gap-6">
                         <div class="col-span-6 sm:col-span-3">
-                          <input type="hidden" wire:model="employee.id">
+                          {{-- <input type="hidden" wire:model="employeeServices"> --}}
                           <label for="service-name" class="block text-sm font-medium text-gray-700">Service name</label>
                           <input type="text" name="service-name" id="service-name" autocomplete="service-name" class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" wire:model.defer="service.name">
                         </div>
